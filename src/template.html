@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="sidebar">
+        <aside>
+            <button id="create-project">Create Project</button>
+            <span class="search-icon">🔍</span>
+            <label for="project-name"></label>
+            <input type="text" id="project-name" name="project-name" placeholder="My new project">
+            <h2> My project</h2>
+            <ul id="project-list">
+
+            </ul>
+        </aside>
+        <dialog class="create-project-dialog">
+            <form method="dialog">
+                <h2>Create Project</h2>
+                <input type="text" name="title" id="new-title" placeholder="Title" required>
+                <input type="text" name="description" id="new-desc" placeholder="Description">
+                <input type="date" name="deadline" id="new-deadline" required>
+                <menu>
+                <button type="submit">Create</button>
+                <button type="button" class="cancel-btn">Cancel</button>
+                </menu>
+            </form>
+        </dialog>
+        <dialog class="create-todo">
+            <form method="dialog">
+                <h2>Create Todo</h2>
+                <input type="text" name="title" id="new-ttitle" placeholder="Title" required>
+                <input type="text" name="description" id="new-tdesc" placeholder="Description">
+                <input type="date" name="duedate" id="new-tduedate" required>
+                <select name="priority" id="new-tpriority" required>
+                    <option value="" disabled selected>Select priority</option>
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                </select>
+                <input type="checkbox" name="checklist" id="new-tchecklist" >
+                <menu>
+                <button type="submit">Create</button>
+                <button type="button" class="todo-cancel-btn">Cancel</button>
+                </menu>
+            </form>
+        </dialog>
+    </div>
+    <div id="content">
+    </div>
+    <div id="project-details"></div> 
+</body>
+</html>
