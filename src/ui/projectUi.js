@@ -10,7 +10,6 @@ export function renderProjectDetails(index) {
     const container = document.getElementById("content");
     container.innerHTML = "";
 
-    // Header Section
     const projectHeader = document.createElement("div");
     projectHeader.innerHTML = `
         <h2>${project.title}</h2>
@@ -18,13 +17,11 @@ export function renderProjectDetails(index) {
         <p><strong>Deadline:</strong> ${project.dueDate}</p>
     `;
 
-    // Add Todo Button
     const todoForm = document.createElement("div");
     const addTodoBtn = document.createElement("button");
     addTodoBtn.innerHTML = "Add Todo";
     todoForm.appendChild(addTodoBtn);
 
-    // Dialog references
     const toDoDialog = document.querySelector(".create-todo");
     const todoCancelbtn = document.querySelector(".todo-cancel-btn");
     const form = toDoDialog.querySelector("form");
@@ -35,7 +32,7 @@ export function renderProjectDetails(index) {
     const priorityInput = document.getElementById("new-tpriority");
     const checklistInput = document.getElementById("new-tchecklist");
 
-    let editingIndex = null; // Track if editing
+    let editingIndex = null; 
 
     addTodoBtn.addEventListener("click", () => {
         editingIndex = null;
@@ -47,12 +44,10 @@ export function renderProjectDetails(index) {
         toDoDialog.showModal();
     });
 
-    // Cancel button inside dialog
     todoCancelbtn.addEventListener("click", () => {
         toDoDialog.close();
     });
 
-    // Submit new or updated todo
     form.addEventListener("submit", (e) => {
         e.preventDefault();
 
@@ -68,10 +63,8 @@ export function renderProjectDetails(index) {
             project.todos = project.todos || [];
 
             if (editingIndex !== null) {
-                // Update existing todo
                 project.todos[editingIndex] = newTodo;
             } else {
-                // Add new todo
                 project.todos.push(newTodo);
             }
 
@@ -81,14 +74,12 @@ export function renderProjectDetails(index) {
         }
     });
 
-    // Render todos
     const todoList = document.createElement("ul");
     todoList.classList.add("todo-list");
 
     const renderTodos = () => {
         todoList.innerHTML = "";
 
-        // Sort todos by priority: high → medium → low
         const priorityOrder = { high: 3, medium: 2, low: 1 };
         const sortedTodos = [...(project.todos || [])].sort((a, b) => {
             return priorityOrder[b.priority] - priorityOrder[a.priority];
@@ -106,7 +97,6 @@ export function renderProjectDetails(index) {
                 <strong>Checklist:</strong> ${todo.checklist ? "✔ Completed" : "✘ Not completed"}
             `;
 
-            // Edit Button
             const editBtn = document.createElement("button");
             editBtn.textContent = "Edit";
             editBtn.addEventListener("click", () => {
@@ -121,11 +111,10 @@ export function renderProjectDetails(index) {
                 toDoDialog.showModal();
             });
 
-            // Delete Button
             const deleteBtn = document.createElement("button");
             deleteBtn.textContent = "Delete";
             deleteBtn.addEventListener("click", () => {
-                const originalIndex = project.todos.indexOf(todo); // delete using original order
+                const originalIndex = project.todos.indexOf(todo); 
                 if (originalIndex !== -1) {
                     project.todos.splice(originalIndex, 1);
                     saveProjects(projects);

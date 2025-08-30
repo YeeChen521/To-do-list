@@ -4,13 +4,10 @@ import { saveProjects, loadProjects } from "./storage";
 import { displayProject } from "./ui/indexUi";
 import { renderProjectDetails } from "./ui/projectUi";
 
-// Load existing projects from localStorage
 const projects = loadProjects();
 
-// Render the sidebar project list
 displayProject(projects);
 
-// Handle "Create Project" button click
 document.addEventListener("DOMContentLoaded", () => {
   const createBtn = document.querySelector("#create-project");
   const dialog = document.querySelector(".create-project-dialog");
